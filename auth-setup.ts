@@ -190,6 +190,7 @@ ${JSON.stringify(existingConfig, null, 2)}`,
         name: "tokenTTL",
         message:
           "How long should the email sign-in link be valid for? (ISO Duration format)?",
+        default: "PT10M",
       },
     ]);
     query += `
