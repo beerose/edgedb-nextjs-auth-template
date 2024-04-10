@@ -1,4 +1,4 @@
-# Next.js + EdgeDB + EdgeDB Auth template 🪄
+# 🎉 Next.js + EdgeDB + EdgeDB Auth template
 
 This starter is designed to help you get up and running with EdgeDB and Next.js quickly. It includes a basic setup for authentication, EdgeDB schema, and a UI to get you started. Below you can find the steps to set up the project and start building your app as well as some ideas for extending it further.
 
@@ -9,6 +9,8 @@ This template includes:
 - [EdgeDB Auth](https://edgedb.com/docs/guides/auth) for authentication
 - [Tailwind CSS](https://tailwindcss.com) for utility-first CSS framework
 - [ESLint](https://eslint.org) for linting
+
+![Next.js + EdgeDB + EdgeDB Auth template](public/page.png)
 
 ## 🧐 What's inside?
 
