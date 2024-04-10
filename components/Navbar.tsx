@@ -17,13 +17,16 @@ const navigation = [
   { name: "Page #2", href: "#", current: false },
 ];
 
-export default function Navbar({ signedIn }: { signedIn: boolean }) {
+export default function Navbar({
+  onSignOut,
+}: {
+  signedIn: boolean;
+  onSignOut: () => Promise<void>;
+}) {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    await fetch("/auth/signout", {
-      headers: { "Content-Type": "application/json" },
-    });
+    await onSignOut();
 
     router.push("/");
   };
@@ -86,7 +89,7 @@ export default function Navbar({ signedIn }: { signedIn: boolean }) {
                       <Disclosure.Button
                         key="Sign out"
                         as="button"
-                        className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                        className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                         onClick={handleSignOut}
                       >
                         Sign out
@@ -146,7 +149,7 @@ export default function Navbar({ signedIn }: { signedIn: boolean }) {
                 <Disclosure.Button
                   key="Sign out"
                   as="button"
-                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                  className="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                   onClick={handleSignOut}
                 >
                   Sign out

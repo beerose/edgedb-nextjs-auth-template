@@ -1,20 +1,28 @@
 import { Item } from "@/dbschema/interfaces";
-import createClient from "edgedb";
 import DeleteItem from "./DeleteItem";
+import { auth } from "@/edgedb";
 
 interface Props {
   items: (Omit<Item, "created_by"> & {
     created_by: {
       name: string;
+      email: string;
     };
   })[];
 }
 const deleteItem = async (id: string) => {
   "use server";
-  const client = createClient();
-  await client.query("DELETE Item FILTER .id = <uuid>$id", {
+  const session = auth.getSession();
+
+  const res = await session.client.query("DELETE Item FILTER .id = <uuid>$id", {
     id,
   });
+
+  if (res.length === 0) {
+    return "Cannot delete item";
+  }
+
+  return null;
 };
 
 export default function Items({ items }: Props) {
@@ -35,7 +43,7 @@ export default function Items({ items }: Props) {
             </div>
             <div>
               <p className="mt-1 line-clamp-2 text-sm leading-6 text-gray-600">
-                Author: {item.created_by.name}
+                Author: {item.created_by.email}
               </p>
               <DeleteItem item={item} handleDelete={deleteItem} />
             </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function AddItem({
@@ -9,12 +10,14 @@ export default function AddItem({
   addItem: (name: string) => Promise<void>;
 }) {
   const [itemName, setItemName] = useState("");
+  const router = useRouter();
   return (
     <form
       onSubmit={async (e) => {
         e.preventDefault();
         await addItem(itemName);
         setItemName("");
+        router.refresh();
       }}
     >
       <div className="space-y-12">

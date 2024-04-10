@@ -2,6 +2,13 @@ import Navbar from "@/components/Navbar";
 import { auth } from "@/edgedb";
 import { redirect } from "next/navigation";
 
+const handleSignOut = async () => {
+  "use server";
+
+  const { signout } = auth.createServerActions();
+  await signout();
+};
+
 export default async function DashboardLayout({
   children,
 }: {
@@ -16,7 +23,7 @@ export default async function DashboardLayout({
 
   return (
     <div className="min-h-full">
-      <Navbar signedIn={signedIn} />
+      <Navbar signedIn={signedIn} onSignOut={handleSignOut} />
 
       <div className="relative isolate px-4 pt-8 sm:px-6 xl:px-16">
         <main>

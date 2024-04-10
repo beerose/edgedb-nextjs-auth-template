@@ -8,7 +8,7 @@ export default function DeleteItem({
   handleDelete,
 }: {
   item: { id: string };
-  handleDelete: (id: string) => Promise<void>;
+  handleDelete: (id: string) => Promise<string | null>;
 }) {
   const router = useRouter();
   return (
@@ -16,7 +16,12 @@ export default function DeleteItem({
       type="button"
       className="text-sm font-semibold text-red-600 mt-2"
       onClick={async () => {
-        await handleDelete(item.id);
+        const error = await handleDelete(item.id);
+        if (error) {
+          alert(error);
+          return;
+        }
+
         router.refresh();
       }}
     >

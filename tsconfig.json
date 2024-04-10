@@ -27,8 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "auth-setup.mts",
-    "auth-setup.mts"
+    "**/*.(mts|ts)"
   ],
   "exclude": ["node_modules"]
 }

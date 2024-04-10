@@ -91,17 +91,10 @@ ${JSON.stringify(existingConfig, null, 2)}
     `;
   }
 
-  const passwordAuthConfig = await inquirer.prompt([
-    {
-      type: "confirm",
-      name: "requireVerification",
-      message: "Should email/password require email verification?",
-    },
-  ]);
   query += `
       CONFIGURE CURRENT DATABASE
       INSERT ext::auth::EmailPasswordProviderConfig {
-        require_verification := <bool>${passwordAuthConfig.requireVerification}
+        require_verification := false,
       };
     `;
 
@@ -110,14 +103,18 @@ ${JSON.stringify(existingConfig, null, 2)}
       type: "input",
       name: "redirectTo",
       message: "Enter the redirect URL:",
-      default: existingConfig.ui?.redirect_to ?? "",
+      default:
+        existingConfig.ui?.redirect_to ??
+        "http://localhost:3000/auth/builtin/callback",
       required: true,
     },
     {
       type: "input",
       name: "redirectToOnSignup",
       message: "Enter the redirect URL on signup:",
-      default: existingConfig.ui?.redirect_to_on_signup ?? "",
+      default:
+        existingConfig.ui?.redirect_to_on_signup ??
+        "http://localhost:3000/auth/builtin/callback?isSignUp=true",
       required: false,
     },
     {
@@ -197,7 +194,7 @@ ${JSON.stringify(existingConfig, null, 2)}
       ext::auth::SMTPConfig::password := '${smtpConfig.password}';
 
       CONFIGURE CURRENT DATABASE SET
-      ext::auth::SMTPConfig::security := 'STARTTLSOrPlainText';
+      ext::auth::SMTPConfig::security := 'TLS';
 
       CONFIGURE CURRENT DATABASE SET
       ext::auth::SMTPConfig::validate_certs := false;

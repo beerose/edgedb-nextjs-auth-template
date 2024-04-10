@@ -14,6 +14,7 @@ export default async function Home() {
     updated: true,
     created_by: {
       name: true,
+      email: true,
     },
   }));
 
