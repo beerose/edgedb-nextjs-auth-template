@@ -1,19 +1,19 @@
-import AddItem from '@/components/AddItem'
-import { ArrowLeftIcon } from '@heroicons/react/20/solid'
-import e from '@/dbschema/edgeql-js'
-import { auth } from '@/edgedb'
-import Link from 'next/link'
+import AddItem from "@/components/AddItem";
+import { ArrowLeftIcon } from "@heroicons/react/20/solid";
+import e from "@/dbschema/edgeql-js";
+import { auth } from "@/edgedb";
+import Link from "next/link";
 
 const addItem = async (name: string) => {
-  'use server'
-  const session = auth.getSession()
+  "use server";
+  const session = auth.getSession();
 
   const newItemQuery = e.insert(e.Item, {
     name,
-  })
+  });
 
-  newItemQuery.run(session.client)
-}
+  newItemQuery.run(session.client);
+};
 
 export default function Example() {
   return (
@@ -27,5 +27,5 @@ export default function Example() {
         <AddItem addItem={addItem} />
       </div>
     </>
-  )
+  );
 }

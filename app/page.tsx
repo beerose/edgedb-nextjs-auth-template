@@ -1,11 +1,11 @@
-import { auth } from '@/edgedb'
-import Link from 'next/link'
-import NextSteps from '@/components/NextSteps'
+import { auth } from "@/edgedb";
+import Link from "next/link";
+import NextSteps from "@/components/NextSteps";
 
 export default async function Home() {
-  const session = auth.getSession()
+  const session = auth.getSession();
 
-  const signedIn = await session.isSignedIn()
+  const signedIn = await session.isSignedIn();
 
   return (
     <div>
@@ -68,5 +68,5 @@ export default async function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }

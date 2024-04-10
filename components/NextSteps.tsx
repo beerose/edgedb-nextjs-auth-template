@@ -8,12 +8,12 @@ import {
   BeakerIcon,
   CheckCircleIcon,
   CloudIcon,
-} from '@heroicons/react/20/solid'
+} from "@heroicons/react/20/solid";
 
 const timeline = [
   {
     id: 0,
-    content: 'Sign up to the platform',
+    content: "Sign up to the platform",
     description: (
       <div>
         Click the sign up button in the top right corner to create an account.
@@ -30,12 +30,12 @@ const timeline = [
   },
   {
     id: 1,
-    content: 'Extend the EdgeDB schema',
+    content: "Extend the EdgeDB schema",
     description: (
       <div>
         Open the <code>schema.esdl</code> file and add your own types and
-        fields. You can start by adding a <code>Post</code> type with a{' '}
-        <code>title</code> and <code>content</code> field or changing the{' '}
+        fields. You can start by adding a <code>Post</code> type with a{" "}
+        <code>title</code> and <code>content</code> field or changing the{" "}
         <code>Item</code> type to include more fields. For example:
         <pre className="mt-2">
           {`type Item {
@@ -52,7 +52,7 @@ const timeline = [
   },
   {
     id: 2,
-    content: 'Edit the EdgeDB query',
+    content: "Edit the EdgeDB query",
     description: (
       <div>
         Open the <code>app/dashboard/page.tsx</code> file and update the query
@@ -77,7 +77,7 @@ const itemsQuery = e.select(e.Item, (_item) => ({
   },
   {
     id: 3,
-    content: 'Add more Auth providers',
+    content: "Add more Auth providers",
     description: (
       <div>
         Open the EdgeDB UI with the <code>edgedb ui</code> command and navigate
@@ -95,7 +95,7 @@ const itemsQuery = e.select(e.Item, (_item) => ({
   },
   {
     id: 4,
-    content: 'Test the reset password flow',
+    content: "Test the reset password flow",
     description: (
       <div>
         Sign out of your account and try to reset your password. Click the
@@ -121,11 +121,7 @@ const itemsQuery = e.select(e.Item, (_item) => ({
         include your new fields. You can add a new field to the form or change
         the existing fields to include your new data.
         <div className="my-4 rounded-md shadow-md shadow-slate-50 bg-white p-4">
-          <img
-            src="new-item.png"
-            alt="Add item form"
-            className="w-96"
-          />
+          <img src="new-item.png" alt="Add item form" className="w-96" />
         </div>
       </div>
     ),
@@ -133,7 +129,7 @@ const itemsQuery = e.select(e.Item, (_item) => ({
   },
   {
     id: 6,
-    content: 'Test access policies',
+    content: "Test access policies",
     description: (
       <p>
         Try deleting an item that you don't own. You shouldn't be able to delete
@@ -151,7 +147,7 @@ const itemsQuery = e.select(e.Item, (_item) => ({
   },
   {
     id: 7,
-    content: 'Modify the EdgeDB Auth UI callback',
+    content: "Modify the EdgeDB Auth UI callback",
     description: (
       <div>
         Open the <code>app/auth.tsx</code> file and update the callback to
@@ -163,11 +159,11 @@ const itemsQuery = e.select(e.Item, (_item) => ({
   },
   {
     id: 8,
-    content: 'Deploy your app',
+    content: "Deploy your app",
     description: (
       <div>
         Once you're happy with your changes, you can deploy your app to the
-        EdgeDB Cloud and Vercel. Follow the deployment instructions in the{' '}
+        EdgeDB Cloud and Vercel. Follow the deployment instructions in the{" "}
         <a
           className="
           text-primary
@@ -188,7 +184,7 @@ const itemsQuery = e.select(e.Item, (_item) => ({
     ),
     icon: CloudIcon,
   },
-]
+];
 
 export default function NextSteps() {
   return (
@@ -196,14 +192,8 @@ export default function NextSteps() {
       <h2 className="text-center text-2xl mb-6 font-bold tracking-tight text-gray-900 sm:text-3xl">
         Next Steps
       </h2>
-      <div
-        className="flow-root"
-        suppressHydrationWarning
-      >
-        <ul
-          role="list"
-          className="-mb-8"
-        >
+      <div className="flow-root" suppressHydrationWarning>
+        <ul role="list" className="-mb-8">
           {timeline.map((step, eventIdx) => (
             <li key={step.id}>
               <div className="relative pb-8">
@@ -235,5 +225,5 @@ export default function NextSteps() {
         </ul>
       </div>
     </div>
-  )
+  );
 }

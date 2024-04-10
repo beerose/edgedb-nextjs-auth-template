@@ -1,11 +1,11 @@
-import { createClient } from 'edgedb'
-import e from '@/dbschema/edgeql-js'
+import { createClient } from "edgedb";
+import e from "@/dbschema/edgeql-js";
 
-import Items from '@/components/Items'
-import Link from 'next/link'
+import Items from "@/components/Items";
+import Link from "next/link";
 
 export default async function Home() {
-  const client = createClient()
+  const client = createClient();
 
   const itemsQuery = e.select(e.Item, (_item) => ({
     id: true,
@@ -15,9 +15,9 @@ export default async function Home() {
     created_by: {
       name: true,
     },
-  }))
+  }));
 
-  const items = await itemsQuery.run(client)
+  const items = await itemsQuery.run(client);
 
   return (
     <>
@@ -33,5 +33,5 @@ export default async function Home() {
       </header>
       <Items items={items} />
     </>
-  )
+  );
 }

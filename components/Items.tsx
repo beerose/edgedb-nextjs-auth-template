@@ -1,33 +1,27 @@
-import { Item } from '@/dbschema/interfaces'
-import createClient from 'edgedb'
-import DeleteItem from './DeleteItem'
+import { Item } from "@/dbschema/interfaces";
+import createClient from "edgedb";
+import DeleteItem from "./DeleteItem";
 
 interface Props {
-  items: (Omit<Item, 'created_by'> & {
+  items: (Omit<Item, "created_by"> & {
     created_by: {
-      name: string
-    }
-  })[]
+      name: string;
+    };
+  })[];
 }
 const deleteItem = async (id: string) => {
-  'use server'
-  const client = createClient()
-  await client.query('DELETE Item FILTER .id = <uuid>$id', {
+  "use server";
+  const client = createClient();
+  await client.query("DELETE Item FILTER .id = <uuid>$id", {
     id,
-  })
-}
+  });
+};
 
 export default function Items({ items }: Props) {
   return (
-    <ul
-      role="list"
-      className="divide-y divide-gray-200"
-    >
+    <ul role="list" className="divide-y divide-gray-200">
       {items.map((item) => (
-        <li
-          key={item.id}
-          className="flex gap-x-4 py-5"
-        >
+        <li key={item.id} className="flex gap-x-4 py-5">
           <div className="flex-auto">
             <div className="flex items-baseline justify-between gap-x-4">
               <p className="text-sm font-semibold leading-6 text-gray-900">
@@ -43,14 +37,11 @@ export default function Items({ items }: Props) {
               <p className="mt-1 line-clamp-2 text-sm leading-6 text-gray-600">
                 Author: {item.created_by.name}
               </p>
-              <DeleteItem
-                item={item}
-                handleDelete={deleteItem}
-              />
+              <DeleteItem item={item} handleDelete={deleteItem} />
             </div>
           </div>
         </li>
       ))}
     </ul>
-  )
+  );
 }

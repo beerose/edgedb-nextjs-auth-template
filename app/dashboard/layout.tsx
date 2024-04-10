@@ -1,17 +1,17 @@
-import Navbar from '@/components/Navbar'
-import { auth } from '@/edgedb'
-import { redirect } from 'next/navigation'
+import Navbar from "@/components/Navbar";
+import { auth } from "@/edgedb";
+import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  const session = auth.getSession()
-  const signedIn = await session.isSignedIn()
+  const session = auth.getSession();
+  const signedIn = await session.isSignedIn();
 
   if (!signedIn) {
-    redirect(auth.getBuiltinUIUrl())
+    redirect(auth.getBuiltinUIUrl());
   }
 
   return (
@@ -24,5 +24,5 @@ export default async function DashboardLayout({
         </main>
       </div>
     </div>
-  )
+  );
 }

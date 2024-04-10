@@ -1,20 +1,20 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { useState } from 'react'
+import Link from "next/link";
+import { useState } from "react";
 
 export default function AddItem({
   addItem,
 }: {
-  addItem: (name: string) => Promise<void>
+  addItem: (name: string) => Promise<void>;
 }) {
-  const [itemName, setItemName] = useState('')
+  const [itemName, setItemName] = useState("");
   return (
     <form
       onSubmit={async (e) => {
-        e.preventDefault()
-        await addItem(itemName)
-        setItemName('')
+        e.preventDefault();
+        await addItem(itemName);
+        setItemName("");
       }}
     >
       <div className="space-y-12">
@@ -66,5 +66,5 @@ export default function AddItem({
         </button>
       </div>
     </form>
-  )
+  );
 }
