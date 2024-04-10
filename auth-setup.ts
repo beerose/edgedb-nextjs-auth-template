@@ -212,7 +212,7 @@ ${JSON.stringify(existingConfig, null, 2)}`,
         type: "input",
         name: "relyingPartyOrigin",
         message: "Enter the relying party origin:",
-        default: "https://dev-web.aglioaglio.com",
+        default: "http://localhost:3000",
       },
     ]);
     query += `
